@@ -1,10 +1,10 @@
 use bitvec::{array::BitArray, order::Lsb0};
 
-use crate::{board::Board, restriction::Restriction, MaybeDigit::Definitely};
+use crate::{board::Board, constraint::Constraint, MaybeDigit::Definitely};
 
 pub struct NormalSudokuRules;
 
-impl Restriction for NormalSudokuRules {
+impl Constraint for NormalSudokuRules {
     fn posibilities(
         &self,
         x: usize,

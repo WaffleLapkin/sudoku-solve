@@ -2,7 +2,7 @@ use bitvec::{array::BitArray, order::Lsb0};
 
 use crate::board::Board;
 
-pub trait Restriction {
+pub trait Constraint {
     // TODO: cache results and instead ask what restrictions are added by placing something
     fn posibilities(
         &self,

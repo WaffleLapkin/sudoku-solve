@@ -8,6 +8,8 @@ use std::fs::File;
 use std::io::{self, Read};
 use std::ops::{Deref, DerefMut};
 use std::path::Path;
+use std::thread;
+use std::time::Duration;
 
 use bitvec::{
     array::BitArray,
@@ -15,8 +17,8 @@ use bitvec::{
 };
 
 pub mod board;
+pub mod constraint;
 pub mod digit;
-pub mod restriction;
 
 use board::Board;
 use digit::{Digit, MaybeDigit};
@@ -42,9 +44,3 @@ fn main() {
         }
     };
 }
-
-/*
-
-TODO: constraint
-
-*/

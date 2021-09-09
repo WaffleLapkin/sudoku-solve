@@ -1,10 +1,10 @@
 use bitvec::{array::BitArray, order::Lsb0};
 
-use crate::{board::Board, restriction::Restriction, Digit, MaybeDigit::*, Solution, Sudoku};
+use crate::{board::Board, constraint::Constraint, Digit, MaybeDigit::*, Solution, Sudoku};
 
 pub fn solve<R>(sudoku: &Sudoku<R>) -> Result<Solution, ()>
 where
-    R: Restriction,
+    R: Constraint,
 {
     let mut state = SolveState::new(sudoku);
 
@@ -45,7 +45,7 @@ impl<'a, R> SolveState<'a, R> {
 
 fn solve_step<R>(state: &mut SolveState<R>) -> Result<(), ()>
 where
-    R: Restriction,
+    R: Constraint,
 {
     let (x, y, idx) = match state.holes.iter_ones().next() {
         Some(hole) => (hole / 9, hole % 9, hole),
